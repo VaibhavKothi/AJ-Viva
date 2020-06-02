@@ -1,0 +1,52 @@
+Ans.1
+Class.forName("com.mysql.jdbc.Driver");
+
+Ans.2
+adit_conn_170010116016 = DriverManager.getConnection("jdbc:mysql://localhost:3306/2160707_170010116016","root","170010116016");
+
+Ans.3
+Statement adit_conn_dState = adit_conn_170010116016.createStatement();
+
+Ans.4
+String query = "create table JDBC_tbl(RECORD INT, DESCRIPTION VARCHAR(16), QUANTITY INT, PRICE FLOAT)"; 
+adit_conn_dState.execute(query);
+
+Ans.5
+String q1,q2,q3,q4;
+q1 = "insert into JDBC_tbl values(100,'ball',28,4.99)";
+adit_conn_dState.addBatch(q1);
+q2 = "insert into JDBC_tbl values(101,'bat',5,9.99)";
+adit_conn_dState.addBatch(q2);
+q3 = "insert into JDBC_tbl values(102,'mobile',20,999.99)";
+adit_conn_dState.addBatch(q3);
+q4 = "insert into JDBC_tbl values(103,'laptop',10,24999.99)";
+adit_conn_dState.addBatch(q4);
+int[] i=adit_conn_dState.executeBatch();
+
+Ans.6
+String sql = "select PRICE from jdbc_tbl";
+ResultSet rt = adit_conn_dState.executeQuery(sql);
+while(rt.next()){
+     System.out.println(rt.getFloat("PRICE"));
+}   
+
+Ans.7
+ResultSet adit_conn_dResult = adit_conn_dState.executeQuery(sql);
+while(adit_conn_dResult.next()){
+     System.out.println(adit_conn_dResult.getFloat("PRICE"));
+}   
+
+Ans.8
+getXXX( ) methods can access columns by index or name (Put the more efficient first).
+
+
+Ans.9
+False
+
+Ans.10
+An "x" indicates that the getXXX method may legally be used to retrieve the given JDBC type.
+An " X " indicates that the getXXX method is recommended for retrieving the given JDBC type.
+
+Ans.11
+String newsale = "UPDATE COFFEES SET SALES=150 where COF_NAME='Expresso'";
+int i = st.executeUpdate(newsale);
