@@ -1,0 +1,6 @@
+<%
+String userAgent = request.getHeader("user-agent");
+if (userAgent.indexOf("MSIE") > -1) {
+  out.println("Your browser is Microsoft Internet Explorer<br/>");
+}
+%>
